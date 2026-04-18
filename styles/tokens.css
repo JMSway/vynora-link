@@ -1,0 +1,41 @@
+:root {
+  --bg-primary: #0F0E0C;
+  --bg-secondary: #1A1814;
+  --bg-tertiary: #252219;
+  --bg-deep: #07060A;
+
+  --accent: #E8651A;
+  --accent-hover: #FF7A2E;
+  --accent-dim: #C25516;
+  --accent-rgb: 232, 101, 26;
+  --accent-dim-rgb: 194, 85, 22;
+
+  --text-primary: #F5EFE4;
+  --text-secondary: #B8AE9E;
+  --text-tertiary: #7A7166;
+
+  --border: rgba(245, 239, 228, 0.08);
+
+  --font-display: 'Clash Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --space-xs: clamp(8px, 2vw, 12px);
+  --space-sm: clamp(12px, 3vw, 16px);
+  --space-md: clamp(16px, 4vw, 24px);
+  --space-lg: clamp(24px, 6vw, 32px);
+  --space-xl: clamp(32px, 8vw, 48px);
+  --space-2xl: clamp(48px, 10vw, 64px);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms ease-out;
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-accent-sm: 0 4px 24px rgba(var(--accent-rgb), 0.25);
+  --shadow-accent-md: 0 6px 32px rgba(var(--accent-rgb), 0.4);
+  --shadow-accent-lg: 0 10px 44px rgba(var(--accent-rgb), 0.55);
+}
