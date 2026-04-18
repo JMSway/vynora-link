@@ -15,10 +15,16 @@
     0 12px 48px rgba(var(--accent-rgb), 0.08);
 }
 
+.avatar picture,
 .avatar img {
   width: 100%;
   height: 100%;
+  display: block;
+}
+
+.avatar img {
   object-fit: cover;
+  object-position: center bottom;
 }
 
 .avatar-initial {

@@ -73,8 +73,16 @@
 
     <div class="profile-block">
       <div class="avatar" aria-label="Damir Abdimanapov">
-        <img src="assets/image/avatar.jpg" alt="Damir Abdimanapov"
-             onerror="this.remove();this.parentElement.insertAdjacentHTML('beforeend','<span class=&quot;avatar-initial&quot;>D</span>')" />
+        <picture>
+          <source type="image/webp"
+                  srcset="/assets/image/avatar.webp 1x, /assets/image/avatar@2x.webp 2x" />
+          <img src="/assets/image/avatar.jpg"
+               srcset="/assets/image/avatar.jpg 1x, /assets/image/avatar@2x.jpg 2x"
+               alt="Damir Abdimanapov"
+               width="104" height="104"
+               decoding="async"
+               onerror="this.parentElement.replaceWith(Object.assign(document.createElement('span'),{className:'avatar-initial',textContent:'D'}))" />
+        </picture>
       </div>
 
       <h1 class="profile-name">Damir</h1>
