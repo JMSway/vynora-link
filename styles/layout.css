@@ -45,7 +45,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: clamp(48px, 12vh, 96px) clamp(20px, 5vw, 32px) clamp(32px, 6vh, 48px);
+  padding: clamp(32px, 8vh, 64px) clamp(20px, 5vw, 32px) clamp(32px, 6vh, 48px);
 }
 
 .main-container {
@@ -63,16 +63,16 @@ body {
 
 .brand-mark {
   position: absolute;
-  top: clamp(20px, 5vw, 32px);
-  left: clamp(20px, 5vw, 32px);
+  top: clamp(24px, 6vw, 40px);
+  left: clamp(24px, 6vw, 40px);
   z-index: 3;
-  opacity: 0.4;
+  opacity: 0.6;
   transition: opacity 300ms ease;
   line-height: 0;
 }
 
 .brand-mark:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .profile-block {
@@ -125,10 +125,10 @@ body {
 .footer-text {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(11px, 2.8vw, 12px);
-  letter-spacing: 0.02em;
+  font-size: clamp(10px, 2.5vw, 11px);
+  letter-spacing: 0.04em;
   color: var(--text-tertiary);
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
 .footer-link {

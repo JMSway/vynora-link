@@ -1,7 +1,7 @@
 /* Avatar */
 
 .avatar {
-  --avatar-size: clamp(104px, 26vw, 128px);
+  --avatar-size: clamp(120px, 30vw, 144px);
   width: var(--avatar-size);
   height: var(--avatar-size);
   border-radius: var(--radius-full);
