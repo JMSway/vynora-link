@@ -61,7 +61,7 @@
 /* Button — secondary (outline, baseline size, fully static) */
 
 .button-secondary {
-  min-height: clamp(60px, 14vw, 68px);
+  min-height: clamp(76px, 18vw, 84px);
 }
 
 .button-secondary:hover {
