@@ -58,7 +58,11 @@
   transition: transform 120ms ease-out;
 }
 
-/* Button — secondary (outline) */
+/* Button — secondary (outline, baseline size, fully static) */
+
+.button-secondary {
+  min-height: clamp(60px, 14vw, 68px);
+}
 
 .button-secondary:hover {
   background: rgba(26, 24, 20, 0.8);
@@ -66,9 +70,11 @@
   transform: translateY(-1px);
 }
 
-/* Button — primary (accent fill + breathing glow) */
+/* Button — primary (accent fill, +15% size, breathing glow) */
 
 .button-primary {
+  min-height: clamp(70px, 16vw, 78px);
+  padding: clamp(16px, 4vw, 20px) clamp(20px, 5vw, 26px);
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg-primary);
@@ -150,6 +156,12 @@
 .button-primary .button-subtitle {
   color: #1A1814;
   font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: letter-spacing 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-primary:hover .button-subtitle {
+  letter-spacing: 0.005em;
 }
 
 .reduced-motion .button-primary {
