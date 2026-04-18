@@ -10,6 +10,16 @@
   --accent-rgb: 232, 101, 26;
   --accent-dim-rgb: 194, 85, 22;
 
+  /* Pre-computed rgba — fallback for Safari <15 which can't resolve
+     rgba(var(--rgb), .x). Used by glows, shadows and tinted borders. */
+  --accent-glow-sm: rgba(232, 101, 26, 0.08);
+  --accent-glow-md: rgba(232, 101, 26, 0.15);
+  --accent-glow-lg: rgba(232, 101, 26, 0.25);
+  --accent-glow-xl: rgba(232, 101, 26, 0.4);
+  --accent-glow-2xl: rgba(232, 101, 26, 0.55);
+  --accent-tint-border: rgba(232, 101, 26, 0.25);
+  --accent-dim-glow: rgba(194, 85, 22, 0.05);
+
   --text-primary: #F5EFE4;
   --text-secondary: #B8AE9E;
   --text-tertiary: #7A7166;
@@ -35,7 +45,7 @@
   --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  --shadow-accent-sm: 0 4px 24px rgba(var(--accent-rgb), 0.25);
-  --shadow-accent-md: 0 6px 32px rgba(var(--accent-rgb), 0.4);
-  --shadow-accent-lg: 0 10px 44px rgba(var(--accent-rgb), 0.55);
+  --shadow-accent-sm: 0 4px 24px var(--accent-glow-lg);
+  --shadow-accent-md: 0 6px 32px var(--accent-glow-xl);
+  --shadow-accent-lg: 0 10px 44px var(--accent-glow-2xl);
 }

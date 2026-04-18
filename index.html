@@ -19,10 +19,17 @@
   <meta property="og:title" content="Damir Abdimanapov - Marketing and AI" />
   <meta property="og:description" content="Практикую маркетинг для языковых школ и образовательных центров, параллельно веду блог об AI и технологиях" />
   <meta property="og:image" content="/web-app-manifest-512x512.png" />
+  <meta property="og:url" content="https://abdimanapov.pages.dev" />
   <meta property="og:type" content="website" />
   <meta property="twitter:card" content="summary" />
   <meta property="twitter:title" content="Damir Abdimanapov - Marketing and AI" />
   <meta property="twitter:image" content="/web-app-manifest-512x512.png" />
+  <link rel="canonical" href="https://abdimanapov.pages.dev" />
+
+  <!-- Preload critical assets so they fetch in parallel with HTML parsing -->
+  <link rel="preload" href="/assets/image/avatar.webp" as="image" type="image/webp" />
+  <link rel="preload" href="/styles/tokens.css" as="style" />
+  <link rel="preload" href="/styles/base.css" as="style" />
 
   <!-- Preconnect for faster font handshake -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,6 +76,14 @@
 <body>
   <div class="bg-noise" aria-hidden="true"></div>
 
+  <a class="brand-mark" href="/" aria-label="Damir Abdimanapov">
+    <svg viewBox="0 0 120 120" width="32" height="32" aria-hidden="true">
+      <line x1="35" y1="80" x2="85" y2="40" stroke="#E8651A" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="35" cy="80" r="6" fill="#E8651A" opacity="0.6"/>
+      <circle cx="85" cy="40" r="10" fill="#E8651A" opacity="0.6"/>
+    </svg>
+  </a>
+
   <main class="main-container">
 
     <div class="profile-block">
@@ -98,7 +113,7 @@
          class="button button-primary"
          aria-label="Grow Up — система для языковых школ">
         <span class="button-icon" aria-hidden="true">
-          <svg data-stroke xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <svg data-stroke xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17L9 11L13 15L21 7"/><path d="M14 7L21 7L21 14"/></svg>
         </span>
         <span class="button-content">
           <span class="button-title">Grow Up</span>

@@ -15,7 +15,7 @@ body::before {
   top: -10vh;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--accent-glow-sm) 0%, transparent 70%);
   filter: blur(60px);
 }
 
@@ -24,7 +24,7 @@ body::after {
   height: 50vw;
   bottom: -15vh;
   left: 30%;
-  background: radial-gradient(circle, rgba(var(--accent-dim-rgb), 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--accent-dim-glow) 0%, transparent 70%);
   filter: blur(80px);
 }
 
@@ -44,7 +44,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-xl) clamp(20px, 5vw, 32px);
+  justify-content: space-between;
+  padding: clamp(48px, 12vh, 96px) clamp(20px, 5vw, 32px) clamp(32px, 6vh, 48px);
 }
 
 .main-container {
@@ -52,11 +53,26 @@ body {
   z-index: 2;
   width: 100%;
   max-width: 460px;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.brand-mark {
+  position: absolute;
+  top: clamp(20px, 5vw, 32px);
+  left: clamp(20px, 5vw, 32px);
+  z-index: 3;
+  opacity: 0.4;
+  transition: opacity 300ms ease;
+  line-height: 0;
+}
+
+.brand-mark:hover {
+  opacity: 0.8;
 }
 
 .profile-block {
@@ -68,7 +84,7 @@ body {
 }
 
 .profile-block .avatar {
-  margin-bottom: clamp(16px, 4vw, 24px);
+  margin-bottom: clamp(20px, 5vw, 28px);
 }
 
 .profile-name {
@@ -102,16 +118,17 @@ body {
   position: relative;
   z-index: 2;
   flex-shrink: 0;
-  margin-top: clamp(40px, 10vw, 64px);
+  margin-top: 0;
   text-align: center;
 }
 
 .footer-text {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: clamp(12px, 3.2vw, 13px);
+  font-size: clamp(11px, 2.8vw, 12px);
   letter-spacing: 0.02em;
   color: var(--text-tertiary);
+  opacity: 0.5;
 }
 
 .footer-link {

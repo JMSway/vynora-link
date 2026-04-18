@@ -1,7 +1,7 @@
 /* Avatar */
 
 .avatar {
-  --avatar-size: clamp(88px, 22vw, 104px);
+  --avatar-size: clamp(104px, 26vw, 128px);
   width: var(--avatar-size);
   height: var(--avatar-size);
   border-radius: var(--radius-full);
@@ -11,8 +11,8 @@
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 0 0 1px rgba(var(--accent-rgb), 0.15),
-    0 12px 48px rgba(var(--accent-rgb), 0.08);
+    0 0 0 1px var(--accent-glow-md),
+    0 12px 48px var(--accent-glow-sm);
 }
 
 .avatar picture,
@@ -62,7 +62,7 @@
 
 .button-secondary:hover {
   background: rgba(26, 24, 20, 0.8);
-  border-color: rgba(var(--accent-rgb), 0.25);
+  border-color: var(--accent-tint-border);
   transform: translateY(-1px);
 }
 
@@ -148,7 +148,8 @@
 }
 
 .button-primary .button-subtitle {
-  color: rgba(15, 14, 12, 0.75);
+  color: #1A1814;
+  font-weight: 500;
 }
 
 .reduced-motion .button-primary {
