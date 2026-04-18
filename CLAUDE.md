@@ -4,33 +4,67 @@
 
 ---
 
-## 13. ПРАВИЛО ОБРАБОТКИ ВНЕШНИХ ССЫЛОК
+## 13. ПРАВИЛО ОБРАБОТКИ ВНЕШНИХ ССЫЛОК (финальная версия)
 
-Для всех ссылок, которые добавляются на страницу в будущем, должен соблюдаться следующий порядок приоритета открытия:
+### Приоритет открытия ссылок
 
-1. **ПРИОРИТЕТ 1 — нативное приложение сервиса**
-   Если у сервиса есть мобильное приложение (LinkedIn, WhatsApp, Instagram, Telegram, YouTube и т.д.) — пытаемся открыть ссылку через deep link этого приложения.
+1. **ПРИОРИТЕТ 1** — нативное приложение
+2. **ПРИОРИТЕТ 2** — системный браузер (Safari / Chrome)
+3. **ПРИОРИТЕТ 3** — текущий WebView (только как последний fallback)
 
-2. **ПРИОРИТЕТ 2 — системный браузер (Safari / Chrome)**
-   Если приложение не установлено или deep link не поддерживается — открываем ссылку в системном браузере (Safari на iOS, Chrome на Android). Для этого используем `target="_blank"` и `rel="noopener noreferrer"`.
+### Как достичь этого
 
-3. **FALLBACK — текущий контекст**
-   Если предыдущие варианты не сработали (например, внутри WebView Instagram) — ссылка откроется в текущем браузере. Это неизбежное техническое ограничение платформ соц-сетей, которое нельзя обойти программно.
+Используй простой HTML + `target="_blank"` + `rel="noopener noreferrer"`.
 
-Для каждой новой внешней ссылки использовать JS-хелпер `openExternalLink(webUrl, deepLinkUrl)`, реализующий вышеуказанный приоритет. Хелпер уже объявлен в `index.html`.
+**НЕ используй** JavaScript для deep links. **НЕ используй** `setTimeout`. **НЕ пытайся** программно форсить переход в системный браузер.
 
-**Пример использования:**
+### Почему это работает
+
+1. **iOS Universal Links** — обычный HTTPS URL LinkedIn автоматически открывает приложение LinkedIn, если оно установлено. Если нет — iOS открывает Safari (системный браузер). Instagram WebView в процессе НЕ участвует.
+2. **Android App Links** — аналогично: HTTPS URL открывает Chrome или приложение, в зависимости от того что установлено и настроено как default для домена.
+3. **Для web-only сайтов** (без приложения, типа Grow Up) — `target="_blank"` открывает новую вкладку в текущей среде. Это приемлемо: обычные сайты отлично рендерятся в WebView.
+
+### Это правило применяется ко ВСЕМ внешним ссылкам — включая футер
+
+Не только кнопки в `links-block`, но и любые ссылки в `footer-block`, в био и где бы то ни было. Например, `Made with Claude Code` ведёт на `anthropic.com/claude-code` — там тоже `target="_blank"` + `rel="noopener noreferrer"`, чтобы открывалось в системном браузере, а не в WebView Instagram.
+
+### Примеры
 
 ```html
-<a href="https://www.linkedin.com/in/abdimanapovda"
-   target="_blank"
-   rel="noopener noreferrer"
-   onclick="openExternalLink('https://www.linkedin.com/in/abdimanapovda', 'linkedin://in/abdimanapovda'); return false;">
-  LinkedIn
-</a>
+<!-- LinkedIn (есть приложение) -->
+<a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+
+<!-- YouTube (есть приложение) -->
+<a href="https://youtube.com/@channel" target="_blank" rel="noopener noreferrer">YouTube</a>
+
+<!-- Twitter / X (есть приложение) -->
+<a href="https://x.com/username" target="_blank" rel="noopener noreferrer">Twitter</a>
+
+<!-- Telegram (есть приложение) -->
+<a href="https://t.me/username" target="_blank" rel="noopener noreferrer">Telegram</a>
+
+<!-- Grow Up (web-only) -->
+<a href="https://growup-system.pages.dev" target="_blank" rel="noopener noreferrer">Grow Up</a>
 ```
 
-Для web-only сервисов (как Grow Up) deep link не нужен — просто `target="_blank"` + `rel="noopener noreferrer"`.
+### Чего НЕ делать (критично)
+
+- НЕ добавлять `onclick` с JavaScript для deep links
+- НЕ использовать `setTimeout` для fallback
+- НЕ использовать схемы вида `linkedin://`, `twitter://` и т.д.
+- НЕ пытаться детектировать приложение через `visibilitychange`
+
+Это всё только ломает поведение, которое ОС уже реализует правильно через Universal Links / App Links. В Instagram WebView JS-подход открывает приложение И оставляет открытой веб-версию параллельно — двойной переход вместо одного.
+
+### Исключение — только WhatsApp
+
+WhatsApp — единственный случай, где схема `https://wa.me/` работает лучше чем обычный HTTPS URL:
+
+```html
+<a href="https://wa.me/77066347600?text=..." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+```
+
+Это работает и как Universal Link (открывает приложение), и в браузере (показывает веб-версию с кнопкой «Открыть»).
 
 ---
 
@@ -56,7 +90,7 @@ project-root/
 │   ├── components.css            # переиспользуемые компоненты (avatar, button)
 │   └── layout.css                # layout главной страницы + атмосферный фон
 ├── scripts/
-│   └── main.js                   # deep links helper + reduced-motion class
+│   └── main.js                   # reduced-motion detection (см. §13: deep-link JS не используется)
 └── assets/
     └── image/                    # изображения для будущих страниц (аватар и т.д.)
 ```
